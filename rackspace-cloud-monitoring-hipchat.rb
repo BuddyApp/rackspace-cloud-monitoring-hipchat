@@ -30,6 +30,6 @@ class RackspaceCloudMonitoringHipchat < Sinatra::Base
   end
 
   post '/alarm' do
-    $room.send("Cloud monitoring", params.inspect)
+    $room.send("CloudMonitor", params.inspect)
   end
 end
