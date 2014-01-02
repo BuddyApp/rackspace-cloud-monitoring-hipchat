@@ -28,5 +28,6 @@ PLATFORMS
 
 DEPENDENCIES
   hipchat
+  json
   sinatra
   unicorn

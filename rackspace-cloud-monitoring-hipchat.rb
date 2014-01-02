@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'yaml'
+require 'json'
 
 class Object
   def blank?
@@ -30,6 +31,17 @@ class RackspaceCloudMonitoringHipchat < Sinatra::Base
   end
 
   post '/alarm' do
-    $room.send("CloudMonitor", params.inspect)
+    params = JSON.parse(request.env["rack.input"].read)
+    name = params["entity"]["label"]
+    status = params["details"]["status"]
+    color = case params["details"]["state"]
+            when 'OK'
+              'green'
+            when 'WARNING'
+              'yellow'
+            when 'CRITICAL'
+              'red'
+            end
+    $room.send("CloudMonitor", "#{name} - #{status}", :color => color)
   end
 end
