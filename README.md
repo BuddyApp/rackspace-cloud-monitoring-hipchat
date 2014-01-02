@@ -7,7 +7,7 @@ How do you set this up?
 =======================
 The app has been tested on Ubuntu 12.04 with Brightbox's 1.9 Ruby (https://launchpad.net/~brightbox/+archive/ruby-ng), it's a Sinatra application and the ways to set this up vary from having your own service, to just running `unicorn -c unicorn.rb -E production -D` from within the directory the app is cloned in.
 
-It expects requests go to /alarm, however you will need to set this up and also do any HTTPS / Basic Auth work yourself through a front-end HTTP server, for reference, my nginx setup is fairly straightforward:
+It expects requests go to /alarm, however you will need to set this up and also do any HTTPS / Basic Auth work yourself through a front-end HTTP server, for reference, a very basic nginx setup is:
 
 ```
   upstream cloudmonitoring {
